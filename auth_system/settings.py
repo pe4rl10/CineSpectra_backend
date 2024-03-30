@@ -13,7 +13,12 @@ import os
 from datetime import timedelta
 from pathlib import Path
 import dj_database_url
-from decouple import config
+from dotenv import load_dotenv
+# from decouple import config
+
+# Load environment variables from .env
+load_dotenv()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -84,17 +89,20 @@ WSGI_APPLICATION = 'auth_system.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'auth_system',
+#         'USER': 'postgres',
+#         'PASSWORD': 'postgres',
+#         'HOST': 'localhost',
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'auth_system',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost',
-    }
+    "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
-DATABASES['default'] = dj_database_url.config()
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
