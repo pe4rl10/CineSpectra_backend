@@ -16,8 +16,8 @@ import dj_database_url
 from dotenv import load_dotenv
 # from decouple import config
 
-# Load environment variables from .env
-load_dotenv()
+# # Load environment variables from .env
+# load_dotenv()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
