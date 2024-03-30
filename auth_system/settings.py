@@ -166,7 +166,7 @@ REST_FRAMEWORK = {
     ),
 }
 
-DOMAIN = ('localhost:5173')
+DOMAIN = ('cine-spectra.vercel.app')
 SITE_NAME = "CineSpectra"
 
 SIMPLE_JWT = {
@@ -204,4 +204,5 @@ AUTH_USER_MODEL = 'accounts.UserAccount'
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
+    'https://cine-spectra.vercel.app'
 ]
