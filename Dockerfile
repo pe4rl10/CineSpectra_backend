@@ -29,7 +29,7 @@ ENV PYTHONUNBUFFERED 1
 COPY . /code
 
 # Set the Django project name as a build argument
-ARG PROJ_NAME="cinespectra"
+ARG PROJ_NAME="auth_system"
 
 # Create a script to run the Django project
 RUN echo '#!/bin/bash\n\
