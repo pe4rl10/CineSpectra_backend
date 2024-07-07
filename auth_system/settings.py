@@ -13,11 +13,11 @@ import os
 from datetime import timedelta
 from pathlib import Path
 import dj_database_url
-from dotenv import load_dotenv
-# from decouple import config
+# from dotenv import load_dotenv
+from decouple import config
 
-# # Load environment variables from .env
-load_dotenv()
+# Load environment variables from .env
+# load_dotenv()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,7 +28,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^%1^y*fkm)nt^ybpzfe5-x@fzvgdk8a2-v*x2=)!($&b6qc-g2'
+SECRET_KEY = config("DJANGO_SECRET_KEY")
+# SECRET_KEY = 'django-insecure-^%1^y*fkm)nt^ybpzfe5-x@fzvgdk8a2-v*x2=)!($&b6qc-g2'
 # SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
@@ -37,7 +38,16 @@ SECRET_KEY = 'django-insecure-^%1^y*fkm)nt^ybpzfe5-x@fzvgdk8a2-v*x2=)!($&b6qc-g2
 DEBUG = True
 
 # ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(" ")
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = [
+    ".railway.app"
+]
+if DEBUG:
+    ALLOWED_HOSTS += [
+        "127.0.0.1",
+        "localhost"
+    ]
+
 
 # Application definition
 
@@ -142,7 +152,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
