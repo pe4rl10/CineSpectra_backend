@@ -35,7 +35,7 @@ SECRET_KEY = config("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get('DEBUG', "False").lower() == "true"
-DEBUG = True
+DEBUG = config("DJANGO_DEBUG", cast=bool)
 
 # ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(" ")
 
@@ -48,6 +48,10 @@ if DEBUG:
         "localhost"
     ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "http://*.railway.app",
+    "https://*.railway.app",
+]
 
 # Application definition
 
