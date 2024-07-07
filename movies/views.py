@@ -37,17 +37,17 @@ class RecommendMovieList(generics.ListAPIView):
         movie_id = self.kwargs.get('movie_id')
         movie_obj = Movies.objects.get(movie_id=movie_id)
         movie_index = movie_obj.id
-        print(movie_index)
+        # print(movie_index)
 
-        movies = pickle.load(open('movies.pkl', 'rb'))
+        # if------------ similarity.pkl doesn't exist
+        # movies = pickle.load(open('movies.pkl', 'rb'))
+        #
+        # cv = CountVectorizer(max_features=5000, stop_words='english')
+        # vectors = cv.fit_transform(movies['tags']).toarray()
+        #
+        # similarity = cosine_similarity(vectors)
 
-        cv = CountVectorizer(max_features=5000, stop_words='english')
-        vectors = cv.fit_transform(movies['tags']).toarray()
-
-        similarity = cosine_similarity(vectors)
-
-
-
+        similarity = pickle.load(open('similarity.pkl', 'rb'))
 
         distances = similarity[movie_index - 1]
         print(distances)

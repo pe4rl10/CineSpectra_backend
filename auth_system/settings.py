@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 # from decouple import config
 
 # # Load environment variables from .env
-# load_dotenv()
+load_dotenv()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,15 +28,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-^%1^y*fkm)nt^ybpzfe5-x@fzvgdk8a2-v*x2=)!($&b6qc-g2'
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'django-insecure-^%1^y*fkm)nt^ybpzfe5-x@fzvgdk8a2-v*x2=)!($&b6qc-g2'
+# SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', "False").lower() == "true"
+# DEBUG = os.environ.get('DEBUG', "False").lower() == "true"
+DEBUG = True
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(" ")
-
+# ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(" ")
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -54,6 +55,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'djoser',
     'corsheaders',
+    'razorpay_backend.apps.RazorpayBackendConfig',
 ]
 
 MIDDLEWARE = [
@@ -206,3 +208,8 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
     'https://cine-spectra.vercel.app'
 ]
+
+# Razorpay
+
+RAZORPAY_KEY_ID = os.environ.get('RAZORPAY_KEY_ID')
+RAZORPAY_KEY_SECRET = os.environ.get('RAZORPAY_KEY_SECRET')
