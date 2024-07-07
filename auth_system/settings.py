@@ -113,7 +113,7 @@ WSGI_APPLICATION = 'auth_system.wsgi.application'
 #     }
 # }
 
-database_url = os.environ.get('DATABASE_URL')
+database_url = config('DATABASE_URL')
 
 DATABASES = {
     "default": dj_database_url.parse(database_url)
@@ -221,5 +221,5 @@ CORS_ALLOWED_ORIGINS = [
 
 # Razorpay
 
-RAZORPAY_KEY_ID = os.environ.get('RAZORPAY_KEY_ID')
-RAZORPAY_KEY_SECRET = os.environ.get('RAZORPAY_KEY_SECRET')
+RAZORPAY_KEY_ID = config('RAZORPAY_KEY_ID')
+RAZORPAY_KEY_SECRET = config('RAZORPAY_KEY_SECRET')
